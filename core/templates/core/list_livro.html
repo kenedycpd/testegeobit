@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load bootstrap4 %}
+{% block body %}
+<br>
+<h1>Lista de Livros</h1>
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Autor</th>
+      <th scope="col">Paginas</th>
+      <th scope="col">Preço</th>
+      <th scope="col">Data</th>
+      <th scope="col">Editar</th>
+      <th scope="col">Deletar</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for list in lista %}
+    <tr>
+      <th scope="row">{{ list.id }}</th>
+      <td>{{ list.titulo }}</td>
+      <td>{{ list.autor }}</td>
+      <td>{{ list.paginas }}</td>
+      <td>{{ list.preco }}</td>
+      <td>{{ list.data }}</td>
+      <td><a href="{% url 'editar' list.id%}" class="btn btn-info">Editar</a></td>
+      <td><a href="{% url 'deletar' list.id %}" class="btn btn-danger">Deletar</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock body %}
