@@ -22,3 +22,9 @@ class AutorTestCase(TestCase):
         self.assertEqual(idade, 34)
         self.assertEqual(email, 'kenedy@santos.com')
         self.assertEqual(telefone, 91343877)
+
+
+
+class TesForm(TestCase):
+    def setUp(self):
+        
