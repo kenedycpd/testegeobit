@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import Autor
 from django.urls import reverse
+from .forms import AutorForm
 
 
 class AutorTestCase(TestCase):
@@ -42,3 +43,12 @@ class TesView(TestCase):
     def test_form(self):
         response = self.client.get(reverse('form_bio'))
         self.assertTemplateUsed(response, 'core/form_bio.html')
+
+    def test_form_autor(self):
+        form = AutorForm(data={
+            'nome': 'kenedy',
+            'idade': 34,
+            'email': 'kenedy@santos.com',
+            'telefone': 91343877
+        })
+        self.assertTrue(form.is_valid())
