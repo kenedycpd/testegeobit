@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from .models import Autor
 from .forms import AutorForm
 
@@ -35,3 +35,16 @@ def deletar(request, id):
 def lista(request, id=id):
     lista = Autor.objects.all()
     return render(request, 'core/list_autor.html', {'lista': lista})
+
+
+def bio(request):
+    return render(request, 'core/bio.html', {})
+
+
+def form_bio_view(self):
+    return HttpResponse('ok')
+    pass
+
+
+def form_bio(request):
+    return render(request, 'core/form_bio.html')

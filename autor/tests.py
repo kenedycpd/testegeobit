@@ -1,5 +1,6 @@
 from django.test import TestCase
 from .models import Autor
+from django.urls import reverse
 
 
 class AutorTestCase(TestCase):
@@ -24,7 +25,20 @@ class AutorTestCase(TestCase):
         self.assertEqual(telefone, 91343877)
 
 
+class TesView(TestCase):
 
-class TesForm(TestCase):
-    def setUp(self):
-        
+    def test_view_bio(self):
+        response = self.client.get(reverse('bio'))
+        self.assertEquals(response.status_code, 200)
+
+    def test_template_bio(self):
+        response = self.client.get(reverse('bio'))
+        self.assertTemplateUsed(response, 'core/bio.html')
+
+    def test_form_bio_view(self):
+        response = self.client.get(reverse('form_bio_view'))
+        self.assertEquals(response.status_code, 200)
+
+    def test_form(self):
+        response = self.client.get(reverse('form_bio'))
+        self.assertTemplateUsed(response, 'core/form_bio.html')
